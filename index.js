@@ -220,7 +220,7 @@ var update = function (modifier) {
         grape.y = 395
         if (CountPoint == 5) {
             alert('Your dog is healthy!')
-            reset();
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -236,8 +236,8 @@ var update = function (modifier) {
         sweet.x = 250
         sweet.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -253,8 +253,8 @@ var update = function (modifier) {
         broccoli.x = 300
         broccoli.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -270,8 +270,8 @@ var update = function (modifier) {
         carrot.x = 350
         carrot.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -287,8 +287,8 @@ var update = function (modifier) {
         chocolate.x = 400
         chocolate.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -304,8 +304,8 @@ var update = function (modifier) {
         corn.x = 450
         corn.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -321,8 +321,8 @@ var update = function (modifier) {
         egg.x = 500
         egg.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
@@ -338,8 +338,8 @@ var update = function (modifier) {
         salmon.x = 550
         salmon.y = 395
         if (CountPoint == 5) {
-            alert('Your dog is healthy!')
-            reset();
+            alert('Great! Your dog is healthy!')
+            location.reload();
         }
         if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
             location.reload();
