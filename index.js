@@ -1,8 +1,10 @@
 // Create the canvas
 // HTML에 사각형 사이즈의 canvas가 생김
 
+
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
+let mySound;
 canvas.width = 640;//그냥 800 으로 봐꿈(image size 고쳐야함)
 canvas.height = 426;//그냥 800 으로 봐꿈(image size 고쳐야함)
 document.body.appendChild(canvas);
@@ -15,7 +17,7 @@ document.body.appendChild(canvas);
 var bgReady = false;
 var bgImage = new Image();  //Image는 proporty  onload를 가지고 있음 이미지 로딩이 끝나면 코드를 런해라
 bgImage.onload = function () {
-    bgReady = true;  
+    bgReady = true;
 };
 bgImage.src = "images/snow.jpg";
 
@@ -23,18 +25,18 @@ bgImage.src = "images/snow.jpg";
 
 // Top image
 var topReady = false;
-var topImage = new Image();  
+var topImage = new Image();
 topImage.onload = function () {
-    topReady = true;  
+    topReady = true;
 };
 topImage.src = "images/가로.png";
 
 
 // side image
 var sideReady = false;
-var sideImage = new Image();  
+var sideImage = new Image();
 sideImage.onload = function () {
-    sideReady = true;  
+    sideReady = true;
 };
 sideImage.src = "images/세로.png";
 
@@ -122,7 +124,7 @@ var dog = {
     y: 0  // where on the canvas are they?
 };
 var sweet = {
-// for this version, the sweet does not move, so just and x and y
+    // for this version, the sweet does not move, so just and x and y
     x: 0,
     y: 0
 };
@@ -168,7 +170,7 @@ var CountPoint = 0;
 
 // Handle keyboard controls
 var keysDown = {}; //object were we properties when keys go down
-                // and then delete them when the key goes up
+// and then delete them when the key goes up
 // so the object tells us if any key is down when that keycode
 // is down.  In our game loop, we will move the hero image if when
 // we go thru render, a key is down
@@ -192,19 +194,19 @@ addEventListener("keyup", function (e) {
 var update = function (modifier) {
 
     //히어로가 밖으로 못나가게 함
-    if (38 in keysDown && dog.y > 32+4) { //  holding up key
+    if (38 in keysDown && dog.y > 32 + 4) { //  holding up key
         dog.y -= dog.speed * modifier;
     }
     if (40 in keysDown && dog.y < canvas.height - (64 + 6)) { //  holding down key
         dog.y += dog.speed * modifier;
     }
-    if (37 in keysDown && dog.x > (32+4)) { // holding left key
+    if (37 in keysDown && dog.x > (32 + 4)) { // holding left key
         dog.x -= dog.speed * modifier;
     }
     if (39 in keysDown && dog.x < canvas.width - (64 + 6)) { // holding right key
         dog.x += dog.speed * modifier;
     }
-    
+
 
 
     // Are they touching?
@@ -213,8 +215,9 @@ var update = function (modifier) {
         && grape.x <= (dog.x + 32)
         && dog.y <= (grape.y + 32)
         && grape.y <= (dog.y + 32)
-        
     ) {
+        mySound = new sound("noGood.mp3");
+        mySound.play();
         --CountPoint;
         grape.x = 200
         grape.y = 395
@@ -222,7 +225,7 @@ var update = function (modifier) {
             alert('Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -231,15 +234,18 @@ var update = function (modifier) {
         && sweet.x <= (dog.x + 32)
         && dog.y <= (sweet.y + 32)
         && sweet.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("good.mp3");
+        mySound.play();
         ++CountPoint;
         sweet.x = 250
         sweet.y = 395
+
         if (CountPoint == 5) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -248,7 +254,9 @@ var update = function (modifier) {
         && broccoli.x <= (dog.x + 32)
         && dog.y <= (broccoli.y + 32)
         && broccoli.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("good.mp3");
+        mySound.play();
         ++CountPoint;
         broccoli.x = 300
         broccoli.y = 395
@@ -256,7 +264,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -265,7 +273,9 @@ var update = function (modifier) {
         && carrot.x <= (dog.x + 32)
         && dog.y <= (carrot.y + 32)
         && carrot.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("good.mp3");
+        mySound.play();
         ++CountPoint;
         carrot.x = 350
         carrot.y = 395
@@ -273,7 +283,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -282,7 +292,9 @@ var update = function (modifier) {
         && chocolate.x <= (dog.x + 32)
         && dog.y <= (chocolate.y + 32)
         && chocolate.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("noGood.mp3");
+        mySound.play();
         --CountPoint;
         chocolate.x = 400
         chocolate.y = 395
@@ -290,7 +302,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -299,7 +311,9 @@ var update = function (modifier) {
         && corn.x <= (dog.x + 32)
         && dog.y <= (corn.y + 32)
         && corn.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("noGood.mp3");
+        mySound.play();
         --CountPoint;
         corn.x = 450
         corn.y = 395
@@ -307,7 +321,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -316,7 +330,9 @@ var update = function (modifier) {
         && egg.x <= (dog.x + 32)
         && dog.y <= (egg.y + 32)
         && egg.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("good.mp3");
+        mySound.play();
         ++CountPoint;
         egg.x = 500
         egg.y = 395
@@ -324,7 +340,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -333,7 +349,9 @@ var update = function (modifier) {
         && salmon.x <= (dog.x + 32)
         && dog.y <= (salmon.y + 32)
         && salmon.y <= (dog.y + 32)
-    ){
+    ) {
+        mySound = new sound("good.mp3");
+        mySound.play();
         ++CountPoint;
         salmon.x = 550
         salmon.y = 395
@@ -341,7 +359,7 @@ var update = function (modifier) {
             alert('Great! Your dog is healthy!')
             location.reload();
         }
-        if (grape.y == 395 && sweet.y == 395 && broccoli.y ==395 && carrot.y ==395 && chocolate.y ==395 && corn.y ==395 && egg.y ==395 && salmon.y ==395){
+        if (grape.y == 395 && sweet.y == 395 && broccoli.y == 395 && carrot.y == 395 && chocolate.y == 395 && corn.y == 395 && egg.y == 395 && salmon.y == 395) {
             location.reload();
             alert('Your dog is crying! Check + and - point!')
         }
@@ -359,14 +377,14 @@ var render = function () {
     if (bgReady) {
         ctx.drawImage(bgImage, 0, 0);
     }
-    
+
     if (sideImage) {
         ctx.drawImage(sideImage, 0, 0); //top
-        ctx.drawImage(sideImage, 640-32,0); //buttom
+        ctx.drawImage(sideImage, 640 - 32, 0); //buttom
     }
     if (topImage) {
         ctx.drawImage(topImage, 0, 0); //top
-        ctx.drawImage(topImage, 0, 426-32); //buttom
+        ctx.drawImage(topImage, 0, 426 - 32); //buttom
     }
 
 
@@ -381,7 +399,7 @@ var render = function () {
     if (grapeReady) {
         ctx.drawImage(grapeImage, grape.x, grape.y);
     }
-    
+
     if (broccoliReady) {
         ctx.drawImage(broccoliImage, broccoli.x, broccoli.y);
     }
@@ -421,7 +439,7 @@ var render = function () {
 
 // Reset the game when the player catches a monster
 var reset = function () {
-    
+
     dog.x = canvas.width / 2;
     dog.y = canvas.height / 2;
 
@@ -484,3 +502,17 @@ main();  // call the main game loop.
 
 //====================================================================================================================
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function () {
+        this.sound.play();
+    }
+    this.stop = function () {
+        this.sound.pause();
+    }
+}
